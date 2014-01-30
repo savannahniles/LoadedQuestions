@@ -4,11 +4,26 @@
       <%= link_to "CFLQ", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Ask", new_question_path %></li>
-          <li><%= link_to "Answer", questions_path %></li>
-          <li><%= link_to "You", users_path %></li>
-          <li><%= link_to "Us", users_path %></li>
-          <li><%= link_to "Sign in", '#' %></li>
+          <% if signed_in? %>
+            <li><%= link_to "Ask", new_question_path %></li>
+            <li><%= link_to "Answer", questions_path %></li>
+            <li><%= link_to "Us", users_path %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                You <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Sign the fuck in.", signin_path %></li>
+          <% end %>
         </ul>
       </nav>
     </div>
