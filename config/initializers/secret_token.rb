@@ -9,4 +9,21 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-LoadedQuestions::Application.config.secret_key_base = '8d7d3a34d51141f1ffc3c06bcbc870d51861fd5cf51d0648c1b15e4de581aab095a37f63f22ab55cf6576704e9a55d3505181477adafc5be605af28f6f906862'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+
+LoadedQuestions::Application.config.secret_key_base = secure_token
