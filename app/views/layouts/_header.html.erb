@@ -1,10 +1,13 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "sample app", '#', id: "logo" %>
+      <%= link_to "CFLQ", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home",    '#' %></li>
+          <li><%= link_to "Ask", new_question_path %></li>
+          <li><%= link_to "Answer", questions_path %></li>
+          <li><%= link_to "You", users_path %></li>
+          <li><%= link_to "Us", users_path %></li>
           <li><%= link_to "Sign in", '#' %></li>
         </ul>
       </nav>

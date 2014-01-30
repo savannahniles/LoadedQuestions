@@ -3,6 +3,7 @@ class Answer < ActiveRecord::Base
 	validates :question, presence: true
 	validates :author, presence: true
 
-	belongs_to :user
-	belongs_to :question
+	#belongs_to :user
+	#belongs_to :question
+
 end

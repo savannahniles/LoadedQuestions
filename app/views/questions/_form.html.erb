@@ -1,25 +1,25 @@
 <%= form_for(@question) do |f| %>
+
   <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% @question.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(@question.errors.count, "error") %>.
     </div>
-  <% end %>
+    <ul>
+    <% @question.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
-  <div class="field">
     <%= f.label :content %><br>
     <%= f.text_field :content %>
-  </div>
-  <div class="field">
+
     <%= f.label :author %><br>
     <%= f.number_field :author %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <input class="btn btn-large btn-primary" name="commit" type="submit"
+         value="Submit that shit." />
+
 <% end %>

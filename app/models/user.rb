@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	validates :first_name, presence: true
 	validates :last_name, presence: true
 
-	has_many :answers
+	#has_many :answers
 	has_secure_password
 	validates :password, length: { minimum: 6 }
 end

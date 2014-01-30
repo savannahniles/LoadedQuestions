@@ -26,15 +26,12 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
 
-    respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @answer }
+        flash[:success] = "Question answered!"
+        redirect_to @answer
       else
-        format.html { render action: 'new' }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
+        redirect_to 'new'
       end
-    end
   end
 
   # PATCH/PUT /answers/1
