@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130023807) do
+ActiveRecord::Schema.define(version: 20140130031624) do
 
   create_table "answers", force: true do |t|
     t.string   "content"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20140130023807) do
     t.datetime "updated_at"
   end
 
+  add_index "answers", ["author"], name: "index_answers_on_author"
+  add_index "answers", ["question"], name: "index_answers_on_question"
+
   create_table "questions", force: true do |t|
     t.string   "content"
     t.integer  "author"
@@ -28,12 +31,15 @@ ActiveRecord::Schema.define(version: 20140130023807) do
     t.datetime "updated_at"
   end
 
+  add_index "questions", ["author"], name: "index_questions_on_author"
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "picture_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
 end
