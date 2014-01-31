@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+<div class="two-line-header">
+	<%= image_tag(@user.picture_url, class: "img-circle", alt: "user icon", width: "100px", height: "100px") %>
+	<h1 class="text"><%= @user.first_name %> <%= @user.last_name %></h1>
+		<p class="text lead">
+			<% if current_user?(@user) %>	
+			Here you are. Number of answers. Number of questions.
+			<% else %>
+			Number of answers. Number of questions.
+			<% end %>
+		</p>
 
-<p>
-  <strong>Picture url:</strong>
-  <%= @user.picture_url %>
-</p>
+</div>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

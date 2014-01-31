@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Ewert);
+@import url(http://fonts.googleapis.com/css?family=Arvo);
 
 /* mixins, variables, etc. */
 
@@ -18,6 +20,7 @@ html {
 
 body {
   padding-top: 60px;
+  font-family: 'Arvo', serif;
 }
 
 section {
@@ -43,9 +46,26 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
+  margin: 50px 0px 50px 0px;
+}
+
+.xl {
+    font-size: 120px;
+}
+
+.special-font {
+  /*font-family: 'Gloria Hallelujah', cursive;*/
+  /*font-family: 'Patrick Hand SC', cursive;*/
+  font-family: 'Ewert', cursive;
+  margin: 0;
+  a {
+    color: black;
+    &:hover {
+      text-decoration: none;
+      background-color: none;
+      color: orange;
+    }
+  }
 }
 
 h2 {
@@ -62,13 +82,61 @@ p {
   line-height: 1.7em;
 }
 
+.two-line-header {
+  margin: 50px 0px;
+  img {
+    position: absolute;
+  }
+  .text {
+    padding-left: 120px;
+    padding-top: 2px;
+  }
+  h1 {
+    margin: 0px;
+    font-size: 60px;
+  }
+  h2 {
+    margin: 5px 0px 0 0;
+    text-align: left;
+  }
+  h3 {
+    margin-bottom: 0px;
+  }
+  p {
+    line-height: 1.4;
+  }
+}
+
+
 
 /* header */
+
+.static_pages {
+  padding-top: 100px;
+  header nav ul li {
+    display: none;
+    &:last-child {
+      display: inline;
+    }
+  }
+}
+
+.sessions {
+  header nav ul li {
+    display: none;
+    &:last-child {
+      display: inline;
+    }
+  }
+}
+
 
 #logo {
   float: left;
   margin-right: 10px;
+  margin-top: 15px;
   font-size: 1.7em;
+  font-family: 'Arvo', serif;
   color: black;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -76,10 +144,32 @@ p {
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: black;
+    color: aqua;
     text-decoration: none;
   }
 }
+
+.user-nav-icon {
+  width: 50px;
+  margin: 10px 0px;
+}
+
+.user-icon {
+  width: 9%;
+  margin: 10px 0px;
+}
+
+.navbar .nav > li > a {
+  padding-top: 25px;
+  &:hover {
+    color:orange;
+  }
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {
+  background-color: magenta;
+  background-image: none;
+  }
 
 /* footer */
 
@@ -114,12 +204,23 @@ footer {
   margin: 0px auto;
   padding: 20px;
   text-align: left;
-  color: #333333;
-  border: 1px solid #e5e5e5;
-  border-radius: 5px;
-  background-color: #f5f5f5;
   form .btn {
     margin: 10px 0;
+  }
+  label {
+    font-size: 20px;
+  }
+}
+
+.button {
+  font-family: 'Arvo', serif;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 30px 0px;
+  &:hover {
+    background-color: aqua;
   }
 }
 
@@ -150,4 +251,65 @@ input {
 
 #notice { /*this is a shitty hack*/
   display: none;
+}
+
+/*profile page*/
+
+.users {
+  .user-nav-icon {
+    visibility: hidden;
+  }
+}
+
+/*questions index*/
+
+.questions-list {
+  list-style: none;
+  margin: 0px;
+  .user-nav-icon {
+    position: absolute;
+    margin-top: 15px;
+  }
+  li {
+    a {
+      color: black;
+      &:hover {
+        text-decoration:none;
+        color: Magenta ;
+      }
+    }
+    .question-content {
+      margin: 10px 70px;
+      .question-text {
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+.bubble 
+{
+position: relative;
+display: inline-block;
+padding: 15px;
+padding-top: 25px;
+background: #ebebeb;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 14px 15px 14px 0;
+border-color: transparent #ebebeb;
+display: block;
+width: 0;
+z-index: 1;
+margin-top: -14px;
+left: -15px;
+top: 30px;
 }

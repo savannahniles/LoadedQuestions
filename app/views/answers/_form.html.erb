@@ -1,4 +1,6 @@
-<%= form_for(@answer) do |f| %>
+
+  <div class="form">
+    <%= form_for(@answer) do |f| %>
   <% if @answer.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
@@ -21,6 +23,7 @@
     <%= f.label :question %><br>
     <%= f.number_field :question %>
 
-  <input class="btn btn-large btn-primary" name="commit" type="submit"
+  <input class="button" name="commit" type="submit"
          value="Submit that shit." />
 <% end %>
+</div>

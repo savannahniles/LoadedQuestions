@@ -1,3 +1,4 @@
+  <div class="form">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
   <div id="error_explanation">
@@ -27,6 +28,7 @@
 <%= f.label :password_confirmation, "Confirm Password" %>
 <%= f.password_field :password_confirmation %>
 
-  <input class="btn btn-large btn-primary" name="commit" type="submit"
+  <input class="button" name="commit" type="submit"
          value="Submit that shit." />
 <% end %>
+</div>

@@ -1,29 +1,23 @@
-<h1>Listing questions</h1>
+<h1>Answer some questions. <small>Read questionable answers.</small></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Author</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<ul class="questions-list">
+<% @questions.each do |question| %>
+  <li>
+    <%= link_to image_tag(current_user.picture_url, alt: User.find(question.author).first_name, class: 'user-nav-icon img-circle'), User.find(question.author) %>
+    <%= link_to question_path(question) do %>
+        <div class="question-content bubble">
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.content %></td>
-        <td><%= question.author %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+          <div class="pointer" >
+        </div>
+
+          <span class="question-text">" <%= question.content %> "</span> <p>
+          
+        </div>
     <% end %>
-  </tbody>
-</table>
+
+
+  </li>
+<% end %>
+</ul>
 
 <br>
-
-<%= link_to 'New Question', new_question_path %>
