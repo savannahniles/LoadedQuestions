@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+   before_action :signed_in_user
 
   # GET /questions
   # GET /questions.json
@@ -10,6 +11,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @author = User.find(@question.author)
+    @answer = Answer.new
   end
 
   # GET /questions/new
@@ -25,7 +28,8 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-
+    #@question = @question.set_author!(current_user)
+    @question.author = current_user.id
 
       if @question.save
         flash[:success] = "Question asked!"
@@ -35,6 +39,8 @@ class QuestionsController < ApplicationController
       end
 
   end
+
+  
 
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json

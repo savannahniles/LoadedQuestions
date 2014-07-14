@@ -1,0 +1,11 @@
+<%= form_for(current_user.answers.build(question_id: @question)) do |f| %>
+  <div>
+
+  	<%= f.hidden_field :question_id%>
+
+  	<%= f.label :content %><br>
+    <%= f.text_field :content %>
+
+  </div>
+  <%= f.submit "Answer", class: "button" %>
+<% end %>

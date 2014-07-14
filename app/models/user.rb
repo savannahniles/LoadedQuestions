@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
 	validates :first_name, presence: true
 	validates :last_name, presence: true
 
-	#has_many :answers
+	has_many :questions, dependent: :destroy
+  has_many :answers, foreign_key: "author", dependent: :destroy
+
 	has_secure_password
 	validates :password, length: { minimum: 6 }
 
@@ -15,6 +17,18 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def answered?(question)
+    answers.find_by(question: question.id)
+  end
+
+  def answer!(question, content)
+    answers.create!(question: question.id, content: content)
+  end
+
+  def delete_answer!(question)
+    answers.find_by(question: question.id).destroy
   end
 
   private

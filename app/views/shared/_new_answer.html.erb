@@ -1,12 +1,12 @@
   <div class="form">
-    <%= form_for(@answer) do |f| %>
-  <% if @answer.errors.any? %>
+    <%= form_for(answer) do |f| %>
+  <% if answer.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      The form contains <%= pluralize(@answer.errors.count, "error") %>.
+      The form contains <%= pluralize(answer.errors.count, "error") %>.
     </div>
     <ul>
-    <% @answer.errors.full_messages.each do |msg| %>
+    <% answer.errors.full_messages.each do |msg| %>
       <li>* <%= msg %></li>
     <% end %>
     </ul>

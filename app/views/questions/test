@@ -14,14 +14,20 @@
 </h1>
 
 <div>
+	<!-- <% render :partial => "/answers/form", :locals => {:answer => @answer} %> -->
+	<!-- <%= render 'shared/answer_form' %> -->
 
   <% if current_user.answered?(@question) %>
-
-    <h2>Answers go here.</h2>
+    <!-- <%= render 'unfollow' %> -->
+    <h2>Answer go here.</h2>
   <% else %>
-
+    <!-- <%= render 'follow' %> -->
     <h2>Form goes here.</h2>
-    <%= render 'answer' %>
   <% end %>
 
 </div>
+
+
+
+
+<%= form_for(@question.answers.build(author: current_user.id)) do |f| %>

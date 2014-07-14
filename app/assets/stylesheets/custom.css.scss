@@ -1,6 +1,6 @@
 @import "bootstrap";
-@import url(http://fonts.googleapis.com/css?family=Ewert);
 @import url(http://fonts.googleapis.com/css?family=Arvo);
+@import url(http://fonts.googleapis.com/css?family=Ewert);
 
 /* mixins, variables, etc. */
 
@@ -312,4 +312,11 @@ z-index: 1;
 margin-top: -14px;
 left: -15px;
 top: 30px;
+}
+
+/*Question show*/
+.question-author {
+  text-align: left;
+  margin-top: 50px;
+  font-size: 36px;
 }

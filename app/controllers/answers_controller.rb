@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user
 
   # GET /answers
   # GET /answers.json
@@ -21,18 +22,24 @@ class AnswersController < ApplicationController
   def edit
   end
 
+  def create
+    @question = Question.find(params[:answer][:question])
+    current_user.answer!(@question)
+    redirect_to @question
+  end
+
   # POST /answers
   # POST /answers.json
-  def create
-    @answer = Answer.new(answer_params)
+  # def create
+  #   @answer = Answer.new(answer_params)
 
-      if @answer.save
-        flash[:success] = "Question answered!"
-        redirect_to @answer
-      else
-        redirect_to 'new'
-      end
-  end
+  #     if @answer.save
+  #       flash[:success] = "Question answered!"
+  #       redirect_to @answer
+  #     else
+  #       redirect_to 'new'
+  #     end
+  # end
 
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
